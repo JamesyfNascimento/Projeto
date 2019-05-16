@@ -1,0 +1,10 @@
+a{
+    color: #343a40;
+}
+a:hover{
+    color: black;
+}
+ 
+.nav > a.active{
+    background-color: #343a40 !important;
+}
