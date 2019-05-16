@@ -8,3 +8,6 @@ Requisitos funcionais de back end
 RFB1:O sofware deve ter um banco de dados
 RFB2:O software deve ser possivel fazer consultas ao banco de dados
 RFB3:O software deve ser possivel alterar os dados dos animais prontos para adocão
+RFB4:Na pagina de listagem de animais, haverá um filtro que será ajustado com base no úsuario logado
+RFB5:Botões na página home será ajustado com base no usuario logado
+
