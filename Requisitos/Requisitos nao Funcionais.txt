@@ -1,0 +1,4 @@
+﻿Requisitos não funcionais:
+RN1:O software deve mostrar os resultados da pesquisa em menos de 2 segundos
+RN2:O software deve mostrar dados mesmo o usuario estando sem internet
+RN3:O software deve estar seguro de atacks ddos
