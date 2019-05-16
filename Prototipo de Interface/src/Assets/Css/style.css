@@ -8,3 +8,7 @@ a:hover{
 .nav > a.active{
     background-color: #343a40 !important;
 }
+
+.navbar > .container{
+    display: block;
+}
