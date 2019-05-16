@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>AnimalHelp</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="Assets/Css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">Sobre nós</h4>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et placerat tellus. Curabitur tempus scelerisque purus. Mauris sed lobortis nibh. Integer lectus felis, iaculis vel eros nec, blandit faucibus augue.</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Contato</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Twitter</a></li>
+                            <li><a href="#" class="text-white">Facebook</a></li>
+                            <li><a href="#" class="text-white">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Início</a></li>
+                            <li><a href="#" class="text-white">Mural de Informações</a></li>
+                            <li><a href="#" class="text-white">Denuncia</a></li>
+                            <li><a href="#" class="text-white">Entre em Contato</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="mr-2">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                        </path>
+                        <circle cx="12" cy="13" r="4"></circle>
+                    </svg>
+                    <strong>Bem Vindo </strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main role="main">
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">AnimalHelp</h1>
+                <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et placerat
+                    tellus. Curabitur tempus scelerisque purus. Mauris sed lobortis nibh. Integer lectus felis, iaculis
+                    vel eros nec, blandit faucibus augue.</p>
+                <p>
+                    <a href="cadastrarAnimal.html" class="btn btn-secondary my-2">Cadastrar Animal</a>
+                    <a href="#filtro" class="btn btn-secondary my-2">Adotar</a>
+                    <a href="#" class="btn btn-secondary my-2">Cadastrar Ong's</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- FILTRO -->
+        <div class="container" id="filtro">
+                <h1 class="text-center mt-5 mb-5">Encontre o seu novo amor aquí!!!</h1>
+
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-3 col-xs-12">
+                        <label for="inputCity">Cidade</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3 col-xs-12">
+                        <label for="inputState">Estado</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3 col-xs-12">
+                        <label for="inputZip">Ong's</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3 col-xs-12">
+                        <label for="inputZip">Sexo</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary float-right">Sign in</button>
+            </form>
+        </div>
+
+        <!-- LISTAGEM DOS ANIMAIS -->
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="Assets/Img/cao.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h1>Bidú</h1>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et
+                                    placerat tellus. Curabitur tempus scelerisque purus. Mauris sed lobortis nibh.
+                                    Integer lectus felis, iaculis vel eros nec, blandit faucibus augue..</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                            <a href="perfilAnimal.html" class="btn btn-sm btn-outline-secondary">Ver
+                                                    Detalhes</a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModalLong">Agendar Visíta</button>
+
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="Assets/Img/cao.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h1>Bidú</h1>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et
+                                    placerat tellus. Curabitur tempus scelerisque purus. Mauris sed lobortis nibh.
+                                    Integer lectus felis, iaculis vel eros nec, blandit faucibus augue..</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="perfilAnimal.html" class="btn btn-sm btn-outline-secondary">Ver
+                                                    Detalhes</a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModalLong">Agendar Visíta</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="Assets/Img/cao.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h1>Bidú</h1>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et
+                                    placerat tellus. Curabitur tempus scelerisque purus. Mauris sed lobortis nibh.
+                                    Integer lectus felis, iaculis vel eros nec, blandit faucibus augue..</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="perfilAnimal.html" class="btn btn-sm btn-outline-secondary">Ver
+                                                    Detalhes</a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModalLong">Agendar Visíta</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="Assets/Img/cao.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h1>Bidú</h1>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et
+                                    placerat tellus. Curabitur tempus scelerisque purus. Mauris sed lobortis nibh.
+                                    Integer lectus felis, iaculis vel eros nec, blandit faucibus augue..</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="perfilAnimal.html" class="btn btn-sm btn-outline-secondary">Ver
+                                                    Detalhes</a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModalLong">Agendar Visíta</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="Assets/Img/cao.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h1>Bidú</h1>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et
+                                    placerat tellus. Curabitur tempus scelerisque purus. Mauris sed lobortis nibh.
+                                    Integer lectus felis, iaculis vel eros nec, blandit faucibus augue..</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="perfilAnimal.html" class="btn btn-sm btn-outline-secondary">Ver
+                                                    Detalhes</a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModalLong">Agendar Visíta</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="Assets/Img/cao.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h1>Bidú</h1>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et
+                                    placerat tellus. Curabitur tempus scelerisque purus. Mauris sed lobortis nibh.
+                                    Integer lectus felis, iaculis vel eros nec, blandit faucibus augue..</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="perfilAnimal.html" class="btn btn-sm btn-outline-secondary">Ver
+                                                    Detalhes</a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModalLong">Agendar Visíta</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="Assets/Img/cao.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h1>Bidú</h1>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et
+                                    placerat tellus. Curabitur tempus scelerisque purus. Mauris sed lobortis nibh.
+                                    Integer lectus felis, iaculis vel eros nec, blandit faucibus augue..</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="perfilAnimal.html" class="btn btn-sm btn-outline-secondary">Ver
+                                                    Detalhes</a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModalLong">Agendar Visíta</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="Assets/Img/cao.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h1>Bidú</h1>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et
+                                    placerat tellus. Curabitur tempus scelerisque purus. Mauris sed lobortis nibh.
+                                    Integer lectus felis, iaculis vel eros nec, blandit faucibus augue..</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="perfilAnimal.html" class="btn btn-sm btn-outline-secondary">Ver
+                                                    Detalhes</a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModalLong">Agendar Visíta</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="Assets/Img/cao.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h1>Bidú</h1>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et
+                                    placerat tellus. Curabitur tempus scelerisque purus. Mauris sed lobortis nibh.
+                                    Integer lectus felis, iaculis vel eros nec, blandit faucibus augue..</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="perfilAnimal.html" class="btn btn-sm btn-outline-secondary">Ver
+                                                    Detalhes</a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModalLong">Adotar</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Agende uma visita</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                        <div class="col-12">
+                                <form>
+                                    <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                    <label for="inputCity">Data da visita</label>
+                                                    <input type="date" class="form-control" id="inputCity">
+                                                  </div>
+                                                  <div class="form-group col-md-4">
+                                                        <label for="inputCity">Período</label>
+                                                        <select id="inputState" class="form-control">
+                                                                <option selected>...</option>
+                                                                <option>Manhã</option>
+                                                                <option>Tarde</option>
+                                                                <option>Noite</option>
+                                                            </select>
+                                                      </div>
+                                                      <div class="form-group col-md-4">
+                                                            <label for="inputCity">Telefone</label>
+                                                            <input type="text" class="form-control" id="(xx) x xxxx-xxxx)">
+
+                                                          </div>
+                                    </div>
+                                    <div class="form-row h-100">
+                                        <label for="inputState">Mensagem</label>
+                                        <textarea class="col-12" name="" id="" rows="5"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                </div>
+                <div class="m-2 pt-2 border-top ">
+                <a href="#" class="btn btn-outline-secondary" data-dismiss="modal">Fechar</a>
+                <button type="button" class="btn btn-secondary float-right">Agendar Visíta</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">ir ao topo</a>
+            </p>
+            <p>AnimalHelp &copy; Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+            <p>Novo no Animalhelp? <a href="../../">Visite nosso guia</a> leia mais
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="Assets/Js/bootstrap.min.js"></script>
+</body>
+
+</html>
