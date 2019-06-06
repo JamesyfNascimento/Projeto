@@ -100,5 +100,48 @@ class AnimalRepositorio extends BaseRepositorio implements IAnimalRepositorio {
            echo $excecao->getMessage();
         }
      }
+
+     /**
+       *
+       * Atualizar: atualiza um animal
+       * Retorna: true para sucesso na atualização,
+       *          False para erro na atualização
+       * @param object $objeto
+       * @return boolean
+       */
+      public function Atualizar( $objeto ) {
+        $id = $objeto->getId();
+        $nome = $objeto->getNome();
+        $especie = $objeto->getEspecie();
+        $genero = $objeto->getGenero();
+        $situacao = $objeto->getSituacao();
+        $data_nascimento = $objeto->getDataNascimento();
+        $historico = $objeto->getHistorico();
+        $raca = $objeto->getRaca();
+
+        $sqlStmt = "UPDATE {$this->tabela} SET NOME=:nome, NOME=:nome, ESPECIE=:especie, GENERO=:genero, SITUACAO=:situacao, DATANASCIMENTO=:dataNascimento, HISTORICO=:historico, RACA=:raca WHERE ID=:id";
+        try {
+           $operacao = $this->conexao->prepare($sqlStmt);
+           $operacao->bindValue(":id", $id, PDO::PARAM_INT);
+           $operacao->bindValue(":nome", $nome, PDO::PARAM_STR);
+           $operacao->bindValue(":especie", $especie, PDO::PARAM_STR);
+           $operacao->bindValue(":genero", $genero, PDO::PARAM_STR);
+           $operacao->bindValue(":situacao", $status, PDO::PARAM_STR);
+           $operacao->bindValue(":dataNascimento", $data_nascimento, PDO::PARAM_STR);
+           $operacao->bindValue(":historico", $historico, PDO::PARAM_STR);
+           $operacao->bindValue(":raca", $raca, PDO::PARAM_STR);
+           if($operacao->execute()){
+              if($operacao->rowCount() > 0){
+                 return true;
+              } else {
+                 return false;
+              }
+           } else {
+              return false;
+           }
+        } catch ( PDOException $excecao ) {
+           echo $excecao->getMessage();
+        }
+     }
 }
 ?>
