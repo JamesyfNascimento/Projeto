@@ -4,6 +4,7 @@ AnimalHelp é um software com o objetivo de auxiliar as pessoas a relatarem anim
 O software permite o envio de localizção dos animais para que pessoas de insituições possão buscar os animais e tratarem para que eles possam ser adotados.
 
 Regras de uso do git:
+
 1:Todo commit deve conter informações de o que foi adicionado e o que foi removido.
 
 2:Caso o documento foi totalmente modificado o commit deve conter que ele foi reestruturado e o motivo da reestruturação.
