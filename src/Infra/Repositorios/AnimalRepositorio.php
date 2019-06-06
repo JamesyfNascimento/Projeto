@@ -170,5 +170,7 @@ class AnimalRepositorio extends BaseRepositorio implements IAnimalRepositorio {
           echo $excecao->getMessage();
        }
     }
+
+    
 }
 ?>
