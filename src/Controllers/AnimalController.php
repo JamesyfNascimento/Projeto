@@ -17,6 +17,7 @@ use Infra\Repositorio\AnimalRepositorio;
 if(!empty($_POST) && isset($_GET['action'])) {
   $animalController = new AnimalController();
 
+  //ADICIONAR
   if($_GET['action'] == 'Adicionar'){
       $nome = $_POST["nome"];
       $especie = $_POST["especie"];
@@ -27,6 +28,11 @@ if(!empty($_POST) && isset($_GET['action'])) {
       $raca = $_POST["raca"];
       $animalController->AdicionarAnimal($nome, $especie, $genero, $situacao, $dataNascimento, $historico, $raca);
   }
+  //REMOVER
+  if($_GET['action'] == 'Remover'){
+    $id = $_POST["id"];
+    $animalController->RemoverAnimal($id);
+}
 }
 
 class AnimalController {
@@ -56,6 +62,24 @@ class AnimalController {
                 )
               );
         }
+    }
+
+    public function RemoverAnimal( $id ){
+      if($this->animalRepositorio->Remover($id)){
+          echo json_encode(
+              array(
+                'success' => true,
+                'message' => "removido"
+              )
+            );
+      }else{
+          echo json_encode(
+              array(
+                'success' => false,
+                'message' => "Error"
+              )
+            );
+      }
     }
 }
 ?>

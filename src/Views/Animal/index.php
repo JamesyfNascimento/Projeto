@@ -1,4 +1,9 @@
-<?php ?>
+<?php 
+$id= -1;
+if(!empty($_GET) && isset($_GET['id'])) {
+    $id = $_GET["id"];
+}
+?>
 <!------ Include the above in your HEAD tag ---------->
 <!DOCTYPE html>
     <html lang="pt-br">
@@ -50,7 +55,7 @@
                 </div>
                 <div class="navbar navbar-dark bg-dark box-shadow">
                     <div class="container">
-                            <a href="home.html" class="navbar-brand">
+                            <a href="../Inicio/" class="navbar-brand">
                                     <strong>Início</strong>
                                 </a>
                                 <a class="navbar-brand text-white"><strong>|</strong></a>
@@ -82,7 +87,7 @@
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 </div>
                                 <div class="card-body">
-                                    <button id="remover" type="button" class="btn btn-danger btn-block">Remover</button>
+                                    <input id="remover" type="button" class="btn btn-danger btn-block" data-idAnimal="<?php echo $id;?>" value="Remover"/>
                                 </div>
                             </div>
                         </div>
@@ -186,15 +191,15 @@
                 </div>
             </section>
             
-            <div class="alerta">
-                <div class="col-8 float-right alert alert-success alert-dismissible fade" role="alert">
-                    <strong>Cadastrado com sucesso!</strong> você está contribuindo para que não exista animais abandonados.
+            <div class="alerta col-6">
+                <div class="float-right alert alert-success alert-dismissible fade" role="alert">
+                    <p></p>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="col-6 float-right alert alert-danger alert-dismissible fade" role="alert">
-                    <strong>Erro ao cadastrar!</strong> não foi possivel cadastrar o animal :(
+                <div class="float-right alert alert-danger alert-dismissible fade" role="alert">
+                    <p></p>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
