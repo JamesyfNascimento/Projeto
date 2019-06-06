@@ -19,5 +19,25 @@ class AnimalController {
        $this->animalRepositorio = new AnimalRepositorio();
        
     }
+
+    public function AdicionarAnimal($nome, $especie, $genero, $situacao, $dataNascimento, $historico, $raca){
+        // Nesta etapa criamos um objeto de contato e logo em seguida vamos fazer destes dados persistentes no banco de dados
+        $animal = new Animal( null, $nome, $especie, $genero, $situacao, $dataNascimento, $historico, $raca);
+        if($this->animalRepositorio->Adicionar($animal)){
+            echo json_encode(
+                array(
+                  'success' => true,
+                  'message' => "adicionado"
+                )
+              );
+        }else{
+            echo json_encode(
+                array(
+                  'success' => false,
+                  'message' => "Error"
+                )
+              );
+        }
+    }
 }
 ?>
