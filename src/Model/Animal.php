@@ -15,6 +15,7 @@ class Animal {
  private $data_nascimento;
  private $historico;
  private $raca;
+ 
 
    public function __construct($idAnimal, $nomeAnimal, $especieAnimal, $generoAnimal, $situacaoAnimal, $data_nascimentoAnimal, $historicoAnimal, $racaAnimal) {
     $this->id = $idAnimal;
