@@ -4,20 +4,23 @@ $(function() {
 
 $(document).on("submit", "#form-cad-animal",function(e){
     e.preventDefault();
+
     var postURL = "../../Controllers/AnimalController.php?action=Adicionar";
-    alert("aaaaa");
     $.ajax({
         type: "POST",
         url: postURL,
         data: $("#form-cad-animal").serialize(),
         success: function(data){
-            alert(data);
-
             var result = JSON.parse(data);
+
             if(result.success){
-                alert("Animal adicionado com sucesso!!! :)");
+                $('.alert').alert();
+                $('.alert-danger').removeClass("show");
+                $('.alert-success').addClass("show");
             }else{
-                alert("Erro ao adicionar um animal!!! :(");
+                $('.alert').alert();
+                $('.alert-success').removeClass("show");
+                $('.alert-danger').addClass("show");
             }
         },
         error: function(xhr, status, error) {
