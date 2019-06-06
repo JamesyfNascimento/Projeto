@@ -101,6 +101,28 @@ class AnimalRepositorio extends BaseRepositorio implements IAnimalRepositorio {
         }
      }
 
+      /**
+       *
+       * ListarTodos: Retorna todos os animais
+       *
+       * 
+       * @return object lista de animas do banco de dados
+       */
+      public function ListarTodos( ) {
+         $sqlStmt = "SELECT * from {$this->tabela}";
+         try {
+            $operacao = $this->conexao->prepare($sqlStmt);
+            $operacao->execute();
+            $animais = $operacao->fetchAll(PDO::FETCH_ASSOC);
+            
+            return  json_encode($animais);
+
+            
+         } catch( PDOException $excecao ){
+            echo $excecao->getMessage();
+         }
+      }
+
      /**
        *
        * Atualizar: atualiza um animal

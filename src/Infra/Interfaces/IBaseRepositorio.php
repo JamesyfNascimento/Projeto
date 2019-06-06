@@ -9,6 +9,7 @@ namespace Infra\Interfaces;
     interface IBaseRepositorio {
         public function Adicionar( $object );
         public function Get( $param );
+        public function ListarTodos( );
         public function Atualizar( $object );
         public function Remover( $param );
     }

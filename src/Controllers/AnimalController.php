@@ -32,7 +32,12 @@ if(!empty($_POST) && isset($_GET['action'])) {
   if($_GET['action'] == 'Remover'){
     $id = $_POST["id"];
     $animalController->RemoverAnimal($id);
-}
+  }
+
+  //ListarTodos
+  if($_GET['action'] == 'ListarTodos'){
+    $animalController->ListarTodosAnimais();
+  }
 }
 
 class AnimalController {
@@ -81,5 +86,14 @@ class AnimalController {
             );
       }
     }
+
+    public function ListarTodosAnimais(){
+      $animais = $this->animalRepositorio->ListarTodos();
+
+      echo $animais;
+
+      
+    }
+
 }
 ?>
