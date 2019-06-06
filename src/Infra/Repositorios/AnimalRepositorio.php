@@ -143,5 +143,32 @@ class AnimalRepositorio extends BaseRepositorio implements IAnimalRepositorio {
            echo $excecao->getMessage();
         }
      }
+
+      /**
+       *
+       * DELETE exclui um animal no banco de dados conforme informado por id
+       * Retorna: true para sucesso na remoção,
+       *          False para erro na remoção
+       * @param int $id
+       * @return boolean
+       */
+      public function Remover( $id ) {
+        $sqlStmt = "DELETE FROM {$this->tabela} WHERE ID=:id";
+       try {
+          $operacao = $this->conexao->prepare($sqlStmt);
+          $operacao->bindValue(":id", $id, PDO::PARAM_INT);
+          if($operacao->execute()){
+             if($operacao->rowCount() > 0) {
+                   return true;
+             } else {
+                   return false;
+             }
+          } else {
+             return false;
+          }
+       } catch ( PDOException $excecao ) {
+          echo $excecao->getMessage();
+       }
+    }
 }
 ?>
