@@ -19,6 +19,7 @@ $(document).on("submit", "#form-cad-animal",function(e){
                 $('.alert-success p').html(mensagem);
                 $('.alert-danger').removeClass("show");
                 $('.alert-success').addClass("show");
+                $('#cadAnimal').modal('hide');
             }else{
                 $('.alert').alert();
                 var mensagem = "Erro ao cadastrar!!!"
