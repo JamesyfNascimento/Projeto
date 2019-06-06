@@ -12,6 +12,23 @@ use Model\Animal;
 //incluindo o arquivo contendo a classe PdoConexao
 require_once '../Infra/Repositorios/AnimalRepositorio.php';
 use Infra\Repositorio\AnimalRepositorio;
+
+//Redireciona para o metodo que vem como parametro do post
+if(!empty($_POST) && isset($_GET['action'])) {
+  $animalController = new AnimalController();
+
+  if($_GET['action'] == 'Adicionar'){
+      $nome = $_POST["nome"];
+      $especie = $_POST["especie"];
+      $genero = $_POST["genero"];
+      $situacao = $_POST["situacao"];
+      $dataNascimento = $_POST["dataNascimento"];
+      $historico = $_POST["historico"];
+      $raca = $_POST["raca"];
+      $animalController->AdicionarAnimal($nome, $especie, $genero, $situacao, $dataNascimento, $historico, $raca);
+  }
+}
+
 class AnimalController {
     private $animalRepositorio;
    
@@ -23,6 +40,12 @@ class AnimalController {
     public function AdicionarAnimal($nome, $especie, $genero, $situacao, $dataNascimento, $historico, $raca){
         // Nesta etapa criamos um objeto de contato e logo em seguida vamos fazer destes dados persistentes no banco de dados
         $animal = new Animal( null, $nome, $especie, $genero, $situacao, $dataNascimento, $historico, $raca);
+        echo json_encode(
+          array(
+            'success' => true,
+            'message' => "adicionado"
+          )
+        );
         if($this->animalRepositorio->Adicionar($animal)){
             echo json_encode(
                 array(
