@@ -71,5 +71,34 @@ class AnimalRepositorio extends BaseRepositorio implements IAnimalRepositorio {
               echo $excecao->getMessage();
         }
      }
+
+     /**
+       *
+       * Recuperar: Retorna um animal apartir o seu id
+       *
+       * @param int $id
+       * @return object
+       */
+      public function Get( $id ) {
+        $sqlStmt = "SELECT * from {$this->tabela} WHERE ID=:id";
+        try {
+           $operacao = $this->conexao->prepare($sqlStmt);
+           $operacao->bindValue(":id", $id, PDO::PARAM_INT);
+           $operacao->execute();
+           $animal = $operacao->fetch(PDO::FETCH_OBJ);
+           $id = $animal->ID;
+           $nome = $animal->NOME;
+             $especie = $animal->ESPECIE;
+             $genero = $animal->GENERO;
+             $status = $animal->STATUS;
+             $data_nascimento = $animal->DATANASCIMENTO;
+             $historico = $animal->HISTORICO;
+             $raca = $animal->RACA;
+           $objeto = new Animal($id, $nome, $especie, $genero, $status, $data_nascimento, $historico, $raca);
+           return $objeto;
+        } catch( PDOException $excecao ){
+           echo $excecao->getMessage();
+        }
+     }
 }
 ?>
