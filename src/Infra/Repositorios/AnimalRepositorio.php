@@ -90,12 +90,12 @@ class AnimalRepositorio extends BaseRepositorio implements IAnimalRepositorio {
            $nome = $animal->NOME;
              $especie = $animal->ESPECIE;
              $genero = $animal->GENERO;
-             $status = $animal->STATUS;
+             $situacao = $animal->SITUACAO;
              $data_nascimento = $animal->DATANASCIMENTO;
              $historico = $animal->HISTORICO;
              $raca = $animal->RACA;
-           $objeto = new Animal($id, $nome, $especie, $genero, $status, $data_nascimento, $historico, $raca);
-           return $objeto;
+           $objeto = new Animal($id, $nome, $especie, $genero, $situacao, $data_nascimento, $historico, $raca);
+           return json_encode($objeto);;
         } catch( PDOException $excecao ){
            echo $excecao->getMessage();
         }
