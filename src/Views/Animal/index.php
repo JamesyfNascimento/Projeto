@@ -1,9 +1,16 @@
 <?php 
-$id= -1;
-if(!empty($_GET) && isset($_GET['id'])) {
-    $id = $_GET["id"];
+if(!empty($_POST) && isset($_POST['ID'])) {
+    $id = $_POST['ID'];
+    $NOME = $_POST['NOME'];
+    $ESPECIE = $_POST['ESPECIE'];
+    $SITUACAO = $_POST['SITUACAO'];
+    $GENERO = $_POST['GENERO'];
+    $HISTORICO = $_POST['HISTORICO'];
+    $DATANASCIMENTO = $_POST['DATANASCIMENTO'];
+    $RACA = $_POST['RACA'];
 }
 ?>
+
 <!------ Include the above in your HEAD tag ---------->
 <!DOCTYPE html>
     <html lang="pt-br">
@@ -19,7 +26,12 @@ if(!empty($_GET) && isset($_GET['id'])) {
         <script type="text/javascript" src="../../Assets/Js/bootstrap.min.js"></script>
         <script type="text/javascript" src="./Js/AnimalController.js"></script>                                                    
 
-
+        <script>
+        $(function(e) {
+            var idAnimal = $("#remover").attr("data-idAnimal");
+            getAnimal(idAnimal);
+        });
+        </script>
         </head>
         <body>
             <header>
@@ -83,8 +95,8 @@ if(!empty($_GET) && isset($_GET['id'])) {
                             <div class="card">
                                 <img class="card-img-top" src="../../Assets/Img/cao.jpg" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">Bidú</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title"><?php echo $NOME?></h5>
+                                    <p class="card-text"><?php echo $HISTORICO?></p>
                                 </div>
                                 <div class="card-body">
                                     <input id="remover" type="button" class="btn btn-danger btn-block" data-idAnimal="<?php echo $id;?>" value="Remover"/>
@@ -107,21 +119,22 @@ if(!empty($_GET) && isset($_GET['id'])) {
                                             <div class="form-group row">
                                                 <label for="nome" class="col-3 col-form-label col-form-label">Nome:</label>
                                                 <div class="col-9">
-                                                    <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required/>
+                                                    <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" value="<?php echo $NOME?>" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="especie" class="col-3 col-form-label col-form-label">Especie:</label>
                                                 <div class="col-9">
-                                                    <input class="form-control" type="text" id="especie" name="especie" placeholder="Especie" required/>
+                                                    <input class="form-control" type="text" id="especie" name="especie" placeholder="Especie" value="<?php echo $ESPECIE?>" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="genero" class="col-3 col-form-label col-form-label">Genero:</label>
                                                 <div class="col-9">
                                                     <div class="row nm">
+                                                    <?php if($GENERO == 'M'){ ?>
                                                         <div class="col-6 form-check">
-                                                            <input class="form-check-input" type="radio" name="genero" id="exampleRadios2" value="M" required>
+                                                            <input class="form-check-input" checked="checked" type="radio" name="genero" id="exampleRadios2" value="M" required>
                                                             <label class="form-check-label" for="exampleRadios2">
                                                                 Macho
                                                             </label>
@@ -132,6 +145,20 @@ if(!empty($_GET) && isset($_GET['id'])) {
                                                                 Fêmea
                                                             </label>
                                                         </div>
+                                                    <?php } else {?>
+                                                        <div class="col-6 form-check">
+                                                            <input class="form-check-input" type="radio" name="genero" id="exampleRadios2" value="M" required>
+                                                            <label class="form-check-label" for="exampleRadios2">
+                                                                Macho
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-6 form-check">
+                                                            <input class="form-check-input" checked="checked" type="radio" name="genero" id="exampleRadios2" value="F" required>
+                                                            <label class="form-check-label" for="exampleRadios2">
+                                                                Fêmea
+                                                            </label>
+                                                        </div>
+                                                    <?php }?>
                                                     </div>                                                
                                                 </div>
                                             </div>
@@ -139,8 +166,9 @@ if(!empty($_GET) && isset($_GET['id'])) {
                                                 <label for="situacao" class="col-3 col-form-label col-form-label">Situacao:</label>
                                                 <div class="col-9">
                                                 <div class="row nm">
+                                                    <?php if($SITUACAO == "Adotado"){ ?>
                                                         <div class="col-4 form-check">
-                                                            <input class="form-check-input" type="radio" name="situacao" id="exampleRadios2" value="Adotado" required>
+                                                            <input class="form-check-input" checked="checked"  type="radio" name="situacao" id="exampleRadios2" value="Adotado" required>
                                                             <label class="form-check-label" for="exampleRadios2">
                                                                 Adotado
                                                             </label>
@@ -157,25 +185,64 @@ if(!empty($_GET) && isset($_GET['id'])) {
                                                                 Na Rua
                                                             </label>
                                                         </div>
+                                                    <?php }else if($SITUACAO == "Para Adotar"){ ?>
+                                                        <div class="col-4 form-check">
+                                                            <input class="form-check-input" type="radio" name="situacao" id="exampleRadios2" value="Adotado" required>
+                                                            <label class="form-check-label" for="exampleRadios2">
+                                                                Adotado
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-4 form-check">
+                                                            <input class="form-check-input" checked="checked"  type="radio" name="situacao" id="exampleRadios2" value="Para Adotar" required>
+                                                            <label class="form-check-label" for="exampleRadios2">
+                                                                Para Adotar
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-4 form-check">
+                                                            <input class="form-check-input" type="radio" name="situacao" id="exampleRadios2" value="Na Rua" required>
+                                                            <label class="form-check-label" for="exampleRadios2">
+                                                                Na Rua
+                                                            </label>
+                                                        </div>
+                                                    <?php }else if($SITUACAO == "Na Rua"){ ?>
+                                                        <div class="col-4 form-check">
+                                                            <input class="form-check-input" type="radio" name="situacao" id="exampleRadios2" value="Adotado" required>
+                                                            <label class="form-check-label" for="exampleRadios2">
+                                                                Adotado
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-4 form-check">
+                                                            <input class="form-check-input"  type="radio" name="situacao" id="exampleRadios2" value="Para Adotar" required>
+                                                            <label class="form-check-label" for="exampleRadios2">
+                                                                Para Adotar
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-4 form-check">
+                                                            <input class="form-check-input" checked="checked" type="radio" name="situacao" id="exampleRadios2" value="Na Rua" required>
+                                                            <label class="form-check-label" for="exampleRadios2">
+                                                                Na Rua
+                                                            </label>
+                                                        </div>
                                                     </div> 
+                                                    <?php }?>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="dataNascimento" class="col-3 col-form-label col-form-label">Nascimento:</label>
                                                 <div class="col-9">
-                                                    <input class="form-control" type="date" id="dataNascimento" name="dataNascimento" required/>
+                                                    <input class="form-control" type="date" id="dataNascimento" name="dataNascimento" value="<?php echo $DATANASCIMENTO;?>" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="raca" class="col-3 col-form-label col-form-label">Raça:</label>
                                                 <div class="col-9">
-                                                    <input class="form-control" type="text" id="raca" name="raca" placeholder="Raça" required />
+                                                    <input class="form-control" type="text" id="raca" name="raca" placeholder="Raça" value="<?php echo $RACA?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="historico" class="col-3 col-form-label col-form-label">Historico:</label>
                                                 <div class="col-9">
-                                                    <textarea class="form-control" id="historico" name="historico" rows="3" required></textarea>
+                                                    <textarea class="form-control" id="historico" name="historico" rows="3"  required><?php echo $HISTORICO?></textarea>
                                                 </div>
                                             </div>
                                             <input class="btn btn-dark float-right" type="submit" value="Atualizar" />
@@ -191,6 +258,19 @@ if(!empty($_GET) && isset($_GET['id'])) {
                 </div>
             </section>
             
+            <div class="space-block-50">
+                
+            </div>
+            <footer class="text-muted ">
+                <div class="container">
+                    <p class="float-right">
+                        <a href="#">ir ao topo</a>
+                    </p>
+                    <p>AnimalHelp &copy; Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                    <p>Novo no Animalhelp? <a href="../../">Visite nosso guia</a> leia mais
+                </div>
+            </footer>
+
             <div class="alerta col-6">
                 <div class="float-right alert alert-success alert-dismissible fade" role="alert">
                     <p></p>
