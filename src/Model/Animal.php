@@ -5,8 +5,8 @@ namespace Model;
 *
 * @author James Yuri
 */
-
-class Animal {
+use JsonSerializable;
+class Animal implements JsonSerializable{
  private $id;  
  private $nome;
  private $especie;
@@ -26,6 +26,19 @@ class Animal {
     Animal::setDataNascimento($data_nascimentoAnimal);
     Animal::setHistorico($historicoAnimal);
     Animal::setRaca($racaAnimal);
+  }
+  
+  public function jsonSerialize(){
+   return [
+      'ID' => $this->id,
+      'NOME' => $this->nome,
+      'ESPECIE' => $this->especie,
+      'GENERO' => $this->genero,
+      'SITUACAO' => $this->situacao,
+      'DATANASCIMENTO' => $this->data_nascimento,
+      'HISTORICO' => $this->historico,
+      'RACA' => $this->raca
+  ];
   }
 
   public function getId(){
