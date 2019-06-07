@@ -70,7 +70,7 @@
         </div>
     </header>
 
-    <main role="main">
+    <main id="main" role="main">
 
         <section class="jumbotron text-center">
             <div class="container">
