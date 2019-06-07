@@ -109,9 +109,20 @@ $(document).on("submit", "#form-cad-animal",function(e){
                            "<p class='card-text'>" + animal.HISTORICO + "</p>"+
                             "<div class='d-flex justify-content-between align-items-center'>"+
                                "<div class='btn-group'>"+
-                                        "<a href='../Animal/index.php?id=" + animal.ID + "' class='btn btn-sm btn-outline-secondary'>Ver Detalhes</a>"+
+                                    "<form id='form-view-animal' method='post' action='../Animal/index.php'>" +
+                                        "<input type='hidden' name='ID' value='" + animal.ID + "'/>"+
+                                        "<input type='hidden' name='NOME' value='" + animal.NOME + "'/>"+
+                                        "<input type='hidden' name='ESPECIE' value='" + animal.ESPECIE + "'/>"+
+                                        "<input type='hidden' name='SITUACAO' value='" + animal.SITUACAO + "'/>"+
+                                        "<input type='hidden' name='GENERO' value='" + animal.GENERO + "'/>"+
+                                        "<input type='hidden' name='HISTORICO' value='" + animal.HISTORICO + "'/>"+
+                                        "<input type='hidden' name='DATANASCIMENTO' value='" + animal.DATANASCIMENTO + "'/>"+
+                                        "<input type='hidden' name='RACA' value='" +animal.RACA  + "'/>"+
+                                        //"<a href=../Animal/index.php?ID=" + animal.ID + "&NOME=" + animal.NOME + "&ESPECIE=" + animal.ESPECIE + "&GENERO=" + animal.GENERO + "&HISTORICO=" + animal.HISTORICO + "&RACA=" + animal.RACA + "&SITUACAO=" + animal.SITUACAO + " id='btnDetalhesAnimal' class='btn btn-sm btn-outline-secondary'>Ver Detalhes</a>"+
+                                        "<button type='submit' id='btnDetalhesAnimal' class='btn btn-sm btn-outline-secondary'>Ver Detalhes</a>"+
+                                        
                                         "<button type='button' class='btn btn-sm btn-outline-danger' data-toggle='modal' data-target='#exampleModalLong'>Agendar Visíta</button>"+
-    
+                                    "</form>"+
                                 "</div>"+
                             "</div>"+
                         "</div>"+
@@ -128,7 +139,32 @@ $(document).on("submit", "#form-cad-animal",function(e){
         error: function(xhr, status, error) {
             alert(error);
         }
-    });
-    
-    
+    });    
 }
+
+
+ function getAnimal(idAnimal){
+    var postURL = "../../Controllers/AnimalController.php?action=GetAnimal";
+    if(idAnimal != -1){
+        var animal = null;
+        $.ajax({
+            type: "POST",
+            url: postURL,
+            data: { id: idAnimal},
+            success: function(data){
+                animal = JSON.parse(data);
+            },
+            error: function(xhr, status, error) {
+                alert(error);
+            },
+            complete: function(a){
+                setTimeout(function(){ 
+                    $('.alert-danger').removeClass("show");
+                    $('.alert-success').removeClass("show");    
+                }, 3000);
+               
+            }
+        });
+        
+    }
+ }
