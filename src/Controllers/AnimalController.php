@@ -38,7 +38,14 @@ if(!empty($_POST) && isset($_GET['action'])) {
   if($_GET['action'] == 'ListarTodos'){
     $animalController->ListarTodosAnimais();
   }
+
+  //pegar informações do animal
+  if($_GET['action'] == 'GetAnimal'){
+    $id = $_POST["id"];
+    $animalController->GetAnimais($id);
+  }
 }
+
 
 class AnimalController {
     private $animalRepositorio;
@@ -93,6 +100,11 @@ class AnimalController {
       echo $animais;
 
       
+    }
+
+    public function GetAnimais($id){
+      $animal = $this->animalRepositorio->Get($id);
+      echo $animal;
     }
 
 }
