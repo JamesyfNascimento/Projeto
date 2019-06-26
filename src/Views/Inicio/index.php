@@ -110,9 +110,8 @@
                     <div class="form-group col-md-4 col-xs-12">
                         <label for="sexoAnimal">Sexo</label>
                         <select id="sexoAnimal" name="sexoAnimal" class="form-control">
-                            <option selected>...</option>
-                            <option value="M">Macho</option>
                             <option value="F">Femea</option>
+                            <option value="M">Macho</option>
                         </select>
                     </div>
                 </div>
