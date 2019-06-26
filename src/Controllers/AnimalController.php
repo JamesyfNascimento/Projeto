@@ -28,6 +28,20 @@ if(!empty($_POST) && isset($_GET['action'])) {
       $raca = $_POST["raca"];
       $animalController->AdicionarAnimal($nome, $especie, $genero, $situacao, $dataNascimento, $historico, $raca);
   }
+
+  //ATUALZAR
+  if($_GET['action'] == 'Atualizar'){
+    $id = $_POST["id"];
+    $nome = $_POST["nome"];
+    $especie = $_POST["especie"];
+    $genero = $_POST["genero"];
+    $situacao = $_POST["situacao"];
+    $dataNascimento = $_POST["dataNascimento"];
+    $historico = $_POST["historico"];
+    $raca = $_POST["raca"];
+    $animalController->AtualizarAnimal($id, $nome, $especie, $genero, $situacao, $dataNascimento, $historico, $raca);
+}
+
   //REMOVER
   if($_GET['action'] == 'Remover'){
     $id = $_POST["id"];
@@ -43,6 +57,14 @@ if(!empty($_POST) && isset($_GET['action'])) {
   if($_GET['action'] == 'GetAnimal'){
     $id = $_POST["id"];
     $animalController->GetAnimais($id);
+  }
+
+  //filtrar lista
+  if($_GET['action'] == 'Filtro'){
+    $sexo = $_POST["sexoAnimal"];
+    $visitaAgendada = $_POST["visitaAgendada"];
+    $animalAtendimento = $_POST["animalAtendimento"];
+    $animalController->Filtrar($sexo, $visitaAgendada, $animalAtendimento);
   }
 }
 
@@ -105,6 +127,31 @@ class AnimalController {
     public function GetAnimais($id){
       $animal = $this->animalRepositorio->Get($id);
       echo $animal;
+    }
+
+    public function Filtrar($sexo, $visitaAgendada, $animalAtendimento){
+      $animal = $this->animalRepositorio->Filtrar($sexo, $visitaAgendada, $animalAtendimento);
+      echo $animal;
+    }
+
+    public function AtualizarAnimal($id, $nome, $especie, $genero, $situacao, $dataNascimento, $historico, $raca){
+      $animal = new Animal( $id, $nome, $especie, $genero, $situacao, $dataNascimento, $historico, $raca);
+              
+      if($this->animalRepositorio->Atualizar($animal)){
+          echo json_encode(
+              array(
+                'success' => true,
+                'message' => "Atualizado"
+              )
+            );
+      }else{
+          echo json_encode(
+              array(
+                'success' => false,
+                'message' => "Error"
+              )
+            );
+      }
     }
 
 }

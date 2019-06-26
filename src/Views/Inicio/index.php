@@ -86,43 +86,39 @@
         </section>
 
         <!-- FILTRO -->
-        <!-- <div class="container" id="filtro">
-                <h1 class="text-center mt-5 mb-5">Encontre o seu novo amor aquí!!!</h1>
+        <div class="container" id="filtro">
+                <h1 class="text-center mt-5 mb-5">Filtrar animais!!!</h1>
 
-            <form class="mb-5">
+            <form class="mb-5" id ="form-filtro-home">
                 <div class="form-row">
-                    <div class="form-group col-md-3 col-xs-12">
-                        <label for="inputCity">Cidade</label>
-                        <select id="inputState" class="form-control">
+                    <div class="form-group col-md-4 col-xs-12">
+                        <label for="visitaAgendada">Animal com visita agendada?</label>
+                        <select id="visitaAgendada" name="visitaAgendada" class="form-control">
                             <option selected>...</option>
-                            <option>...</option>
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-3 col-xs-12">
-                        <label for="inputState">Estado</label>
-                        <select id="inputState" class="form-control">
+                    <div class="form-group col-md-4 col-xs-12">
+                        <label for="animalAtendimento">Animal em atendimento?</label>
+                        <select id="animalAtendimento" name="animalAtendimento" class="form-control">
                             <option selected>...</option>
-                            <option>...</option>
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-3 col-xs-12">
-                        <label for="inputZip">Ong's</label>
-                        <select id="inputState" class="form-control">
+                    <div class="form-group col-md-4 col-xs-12">
+                        <label for="sexoAnimal">Sexo</label>
+                        <select id="sexoAnimal" name="sexoAnimal" class="form-control">
                             <option selected>...</option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3 col-xs-12">
-                        <label for="inputZip">Sexo</label>
-                        <select id="inputState" class="form-control">
-                            <option selected>...</option>
-                            <option>...</option>
+                            <option value="M">Macho</option>
+                            <option value="F">Femea</option>
                         </select>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-secondary float-right">Filtrar</button>
             </form>
-        </div> -->
+        </div>
 
         <!-- LISTAGEM DOS ANIMAIS -->
         <div class="album py-5 bg-light">

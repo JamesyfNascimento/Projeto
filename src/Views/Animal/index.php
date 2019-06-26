@@ -26,12 +26,7 @@ if(!empty($_POST) && isset($_POST['ID'])) {
         <script type="text/javascript" src="../../Assets/Js/bootstrap.min.js"></script>
         <script type="text/javascript" src="./Js/AnimalController.js"></script>                                                    
 
-        <script>
-        $(function(e) {
-            var idAnimal = $("#remover").attr("data-idAnimal");
-            getAnimal(idAnimal);
-        });
-        </script>
+        
         </head>
         <body>
             <header>
@@ -115,7 +110,8 @@ if(!empty($_POST) && isset($_POST['ID'])) {
                             <div class="tab-content" id="animalTabContent">
                                 <div class="tab-pane fade show active" id="perfil-animal" role="tabpanel" aria-labelledby="perfil-animal-tab">
                                     <div class="space-block-50">
-                                        <form id="form-cad-animal" method="Post">
+                                        <form id="form-atualizar-animal" method="Post">
+                                            <input type="hidden" name="id" id="id" value="<?php echo $id?>">
                                             <div class="form-group row">
                                                 <label for="nome" class="col-3 col-form-label col-form-label">Nome:</label>
                                                 <div class="col-9">
@@ -134,27 +130,27 @@ if(!empty($_POST) && isset($_POST['ID'])) {
                                                     <div class="row nm">
                                                     <?php if($GENERO == 'M'){ ?>
                                                         <div class="col-6 form-check">
-                                                            <input class="form-check-input" checked="checked" type="radio" name="genero" id="exampleRadios2" value="M" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" checked="checked" type="radio" name="genero" id="macho" value="M" required>
+                                                            <label class="form-check-label" for="macho">
                                                                 Macho
                                                             </label>
                                                         </div>
                                                         <div class="col-6 form-check">
-                                                            <input class="form-check-input" type="radio" name="genero" id="exampleRadios2" value="F" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" type="radio" name="genero" id="femea" value="F" required>
+                                                            <label class="form-check-label" for="femea">
                                                                 Fêmea
                                                             </label>
                                                         </div>
                                                     <?php } else {?>
                                                         <div class="col-6 form-check">
-                                                            <input class="form-check-input" type="radio" name="genero" id="exampleRadios2" value="M" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" type="radio" name="genero" id="macho" value="M" required>
+                                                            <label class="form-check-label" for="macho">
                                                                 Macho
                                                             </label>
                                                         </div>
                                                         <div class="col-6 form-check">
-                                                            <input class="form-check-input" checked="checked" type="radio" name="genero" id="exampleRadios2" value="F" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" checked="checked" type="radio" name="genero" id="femea" value="F" required>
+                                                            <label class="form-check-label" for="femea">
                                                                 Fêmea
                                                             </label>
                                                         </div>
@@ -166,65 +162,88 @@ if(!empty($_POST) && isset($_POST['ID'])) {
                                                 <label for="situacao" class="col-3 col-form-label col-form-label">Situacao:</label>
                                                 <div class="col-9">
                                                 <div class="row nm">
+                                                    <div class="d-none" id="divSituacaoAnimal">
+                                                        <div class="row">
+                                                            <div class="col-4 form-check">
+                                                                <input class="form-check-input" type="radio" name="situacao" id="adotado" value="Adotado" required>
+                                                                <label class="form-check-label" for="adotado">
+                                                                    Adotado
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-4 form-check">
+                                                                <input class="form-check-input"  type="radio" name="situacao" id="adotar" value="Para Adotar" required>
+                                                                <label class="form-check-label" for="adotar">
+                                                                    Para Adotar
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-4 form-check">
+                                                                <input class="form-check-input" checked="checked" type="radio" name="situacao" id="rua" value="Na Rua" required>
+                                                                <label class="form-check-label" for="rua">
+                                                                    Na Rua
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                    </div>
                                                     <?php if($SITUACAO == "Adotado"){ ?>
                                                         <div class="col-4 form-check">
-                                                            <input class="form-check-input" checked="checked"  type="radio" name="situacao" id="exampleRadios2" value="Adotado" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" checked="checked"  type="radio" name="situacao" id="adotado" value="Adotado" required>
+                                                            <label class="form-check-label" for="adotado">
                                                                 Adotado
                                                             </label>
                                                         </div>
                                                         <div class="col-4 form-check">
-                                                            <input class="form-check-input" type="radio" name="situacao" id="exampleRadios2" value="Para Adotar" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" type="radio" name="situacao" id="adotar" value="Para Adotar" required>
+                                                            <label class="form-check-label" for="adotar">
                                                                 Para Adotar
                                                             </label>
                                                         </div>
                                                         <div class="col-4 form-check">
-                                                            <input class="form-check-input" type="radio" name="situacao" id="exampleRadios2" value="Na Rua" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" type="radio" name="situacao" id="rua" value="Na Rua" required>
+                                                            <label class="form-check-label" for="rua">
                                                                 Na Rua
                                                             </label>
                                                         </div>
                                                     <?php }else if($SITUACAO == "Para Adotar"){ ?>
                                                         <div class="col-4 form-check">
-                                                            <input class="form-check-input" type="radio" name="situacao" id="exampleRadios2" value="Adotado" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" type="radio" name="situacao" id="adotado" value="Adotado" required>
+                                                            <label class="form-check-label" for="adotado">
                                                                 Adotado
                                                             </label>
                                                         </div>
                                                         <div class="col-4 form-check">
-                                                            <input class="form-check-input" checked="checked"  type="radio" name="situacao" id="exampleRadios2" value="Para Adotar" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" checked="checked"  type="radio" name="situacao" id="adotar" value="Para Adotar" required>
+                                                            <label class="form-check-label" for="adotar">
                                                                 Para Adotar
                                                             </label>
                                                         </div>
                                                         <div class="col-4 form-check">
-                                                            <input class="form-check-input" type="radio" name="situacao" id="exampleRadios2" value="Na Rua" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" type="radio" name="situacao" id="rua" value="Na Rua" required>
+                                                            <label class="form-check-label" for="rua">
                                                                 Na Rua
                                                             </label>
                                                         </div>
                                                     <?php }else if($SITUACAO == "Na Rua"){ ?>
                                                         <div class="col-4 form-check">
-                                                            <input class="form-check-input" type="radio" name="situacao" id="exampleRadios2" value="Adotado" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" type="radio" name="situacao" id="adotado" value="Adotado" required>
+                                                            <label class="form-check-label" for="adotado">
                                                                 Adotado
                                                             </label>
                                                         </div>
                                                         <div class="col-4 form-check">
-                                                            <input class="form-check-input"  type="radio" name="situacao" id="exampleRadios2" value="Para Adotar" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input"  type="radio" name="situacao" id="adotar" value="Para Adotar" required>
+                                                            <label class="form-check-label" for="adotar">
                                                                 Para Adotar
                                                             </label>
                                                         </div>
                                                         <div class="col-4 form-check">
-                                                            <input class="form-check-input" checked="checked" type="radio" name="situacao" id="exampleRadios2" value="Na Rua" required>
-                                                            <label class="form-check-label" for="exampleRadios2">
+                                                            <input class="form-check-input" checked="checked" type="radio" name="situacao" id="rua" value="Na Rua" required>
+                                                            <label class="form-check-label" for="rua">
                                                                 Na Rua
                                                             </label>
                                                         </div>
-                                                    </div> 
                                                     <?php }?>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row">

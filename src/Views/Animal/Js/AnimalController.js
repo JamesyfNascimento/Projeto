@@ -15,7 +15,7 @@ $(document).on("submit", "#form-cad-animal",function(e){
 
             if(result.success){
                 $('.alert').alert();
-                var mensagem = "Cadastrado com sucesso!!!"
+                var mensagem = "Cadastrado com sucesso!!!";
                 $('.alert-success p').html(mensagem);
                 $('.alert-danger').removeClass("show");
                 $('.alert-success').addClass("show");
@@ -23,7 +23,7 @@ $(document).on("submit", "#form-cad-animal",function(e){
                 listarTodosAnimais();
             }else{
                 $('.alert').alert();
-                var mensagem = "Erro ao cadastrar!!!"
+                var mensagem = "Erro ao cadastrar!!!";
                 $('.alert-danger p').html(mensagem);
                 $('.alert-success').removeClass("show");
                 $('.alert-danger').addClass("show");
@@ -42,6 +42,42 @@ $(document).on("submit", "#form-cad-animal",function(e){
     });
  });
 
+ $(document).on("submit", "#form-atualizar-animal",function(e){
+    e.preventDefault();
+    var idAnimal = $("#form-atualizar-animal #id").val();
+    var postURL = "../../Controllers/AnimalController.php?action=Atualizar";
+    $.ajax({
+        type: "POST",
+        url: postURL,
+        data: $("#form-atualizar-animal").serialize(),
+        success: function(data){
+            var result = JSON.parse(data);
+            if(result.success){
+                $('.alert').alert();
+                var mensagem = "Animal editado com sucesso!!!";
+                $('.alert-success p').html(mensagem);
+                $('.alert-danger').removeClass("show");
+                $('.alert-success').addClass("show");
+            }else{
+                $('.alert').alert();
+                var mensagem = "Erro ao editar!!!";
+                $('.alert-danger p').html(mensagem);
+                $('.alert-success').removeClass("show");
+                $('.alert-danger').addClass("show");
+            }
+        },
+        error: function(xhr, status, error) {
+            alert(error);
+        },
+        complete: function(){
+            setTimeout(function(){ 
+                $('.alert-danger').removeClass("show");
+                $('.alert-success').removeClass("show");    
+            }, 3000);
+           
+        }
+    });
+ });
 
  $(document).on("click", "#remover",function(e){
     e.preventDefault();
@@ -153,6 +189,7 @@ $(document).on("submit", "#form-cad-animal",function(e){
             data: { id: idAnimal},
             success: function(data){
                 animal = JSON.parse(data);
+                preencherFormAtualizar(animal);
             },
             error: function(xhr, status, error) {
                 alert(error);
@@ -165,6 +202,89 @@ $(document).on("submit", "#form-cad-animal",function(e){
                
             }
         });
-        
+        return animal;
     }
  }
+
+function preencherFormAtualizar(animal){
+    $("#id").val(animal.ID);
+    $("#nome").val(animal.NOME);
+    if(animal.GENERO === "M"){
+        $("#macho").attr("checked", "checked");
+    }else if(animal.GENERO === "F"){
+        $("#femea").attr("checked", "checked");
+    }
+    $("#divSituacaoAnimal").removeClass("d-none");
+    if(animal.SITUACAO === "Adotado"){
+        $("#adotado").attr("checked", "checked");
+    }else if(animal.SITUACAO === "Para Adotar"){
+        $("#adotar").attr("checked", "checked");
+    }else if(animal.SITUACAO === "Na Rua"){
+        $("#rua").attr("checked", "checked");
+    }
+    $("#dataNascimento").val(animal.DATANASCIMENTO);
+    $("#especie").val(animal.ESPECIE);
+    $("#historico").val(animal.HISTORICO);
+    $("#raca").val(animal.RACA);
+}
+
+
+$(document).on("submit", "#form-filtro-home", function(e){
+    e.preventDefault();   
+
+    var postURL = "../../Controllers/AnimalController.php?action=Filtro";
+    $.ajax({
+        type: "POST",
+        url: postURL,
+        data: $("#form-filtro-home").serialize(),
+        success: function(data){
+            var result = JSON.parse(data);
+            var listaAnimaisHtml = "<div class='row'>";
+            if(result.length > 0){ 
+                result.forEach(function(animal){
+                    listaAnimaisHtml += "<div class='col-md-4'>" +
+                    "<div class='card mb-4 box-shadow'>"+
+                        "<img class='card-img-top' src='../../Assets/Img/cao.jpg' alt='Card image cap'>"+
+                        "<div class='card-body'>"+
+                            "<h1>" + animal.NOME + "</h1>"+
+                           "<p class='card-text'>" + animal.HISTORICO + "</p>"+
+                            "<div class='d-flex justify-content-between align-items-center'>"+
+                               "<div class='btn-group'>"+
+                                    "<form id='form-view-animal' method='post' action='../Animal/index.php'>" +
+                                        "<input type='hidden' name='ID' value='" + animal.ID + "'/>"+
+                                        "<input type='hidden' name='NOME' value='" + animal.NOME + "'/>"+
+                                        "<input type='hidden' name='ESPECIE' value='" + animal.ESPECIE + "'/>"+
+                                        "<input type='hidden' name='SITUACAO' value='" + animal.SITUACAO + "'/>"+
+                                        "<input type='hidden' name='GENERO' value='" + animal.GENERO + "'/>"+
+                                        "<input type='hidden' name='HISTORICO' value='" + animal.HISTORICO + "'/>"+
+                                        "<input type='hidden' name='DATANASCIMENTO' value='" + animal.DATANASCIMENTO + "'/>"+
+                                        "<input type='hidden' name='RACA' value='" +animal.RACA  + "'/>"+
+                                        //"<a href=../Animal/index.php?ID=" + animal.ID + "&NOME=" + animal.NOME + "&ESPECIE=" + animal.ESPECIE + "&GENERO=" + animal.GENERO + "&HISTORICO=" + animal.HISTORICO + "&RACA=" + animal.RACA + "&SITUACAO=" + animal.SITUACAO + " id='btnDetalhesAnimal' class='btn btn-sm btn-outline-secondary'>Ver Detalhes</a>"+
+                                        "<button type='submit' id='btnDetalhesAnimal' class='btn btn-sm btn-outline-secondary'>Ver Detalhes</a>"+
+                                        
+                                        "<button type='button' class='btn btn-sm btn-outline-danger' data-toggle='modal' data-target='#exampleModalLong'>Agendar Visíta</button>"+
+                                    "</form>"+
+                                "</div>"+
+                            "</div>"+
+                        "</div>"+
+                    "</div>"+
+                "</div>"
+                });
+                listaAnimaisHtml += "</div>"
+            }else{
+                listaAnimaisHtml = "<h1 class='text-center'>Nenhum animal encontrado!!! :(</h1>"
+            }
+            $("#listagemAnimal").html(listaAnimaisHtml);
+        },
+        error: function(xhr, status, error) {
+            alert(error);
+        },
+        complete: function(){
+            setTimeout(function(){ 
+                $('.alert-danger').removeClass("show");
+                $('.alert-success').removeClass("show");    
+            }, 3000);
+           
+        }
+    })
+})

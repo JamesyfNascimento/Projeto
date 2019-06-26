@@ -123,6 +123,47 @@ class AnimalRepositorio extends BaseRepositorio implements IAnimalRepositorio {
          }
       }
 
+      /**
+       *
+       * Filtra animais: Retorna uma lista de animais de acordo com o filtro
+       * @param char $sexo
+       *  @param bool $visitaAgendada
+       *  @param bool $animalAtendimento
+       * 
+       * @return object lista de animas do banco de dados
+       */
+      public function Filtrar($sexo, $visitaAgendada, $animalAtendimento ) {
+         if($visitaAgendada=="true" && $animalAtendimento=="true"){
+            $sqlStmt = "SELECT * from {$this->tabela} a
+            inner join Visita v on a.ID = v.id_animal
+            inner join Atendimento c on a.ID = c.id_animal where a.GENERO = '{$sexo}';";
+         }else if($visitaAgendada=="false" && $animalAtendimento=="false"){
+            $sqlStmt = "SELECT * from {$this->tabela} a  
+            inner join Atendimento c on a.ID != c.id_animal 
+            inner join Visita v on a.ID != v.id_animal  where c.id_animal != v.id_animal and a.GENERO = '{$sexo}';";
+
+         }else if($visitaAgendada == "true"){
+            $sqlStmt = "SELECT * from {$this->tabela} a
+            inner join Visita v on a.ID = v.id_animal  where a.GENERO = '{$sexo}';";
+         }else if($animalAtendimento == "true"){
+            $sqlStmt = "SELECT * from {$this->tabela} a
+            inner join Atendimento c on a.ID = c.id_animal where a.GENERO = '{$sexo}';";
+         }
+        
+         // $sqlStmt = "SELECT * from {$this->tabela}";
+         try {
+            $operacao = $this->conexao->prepare($sqlStmt);
+            $operacao->execute();
+            $animais = $operacao->fetchAll(PDO::FETCH_ASSOC);
+            //echo json_encode($animais);
+            return  json_encode($animais);
+
+            
+         } catch( PDOException $excecao ){
+            echo $excecao->getMessage();
+         }
+      }
+
      /**
        *
        * Atualizar: atualiza um animal
@@ -141,14 +182,14 @@ class AnimalRepositorio extends BaseRepositorio implements IAnimalRepositorio {
         $historico = $objeto->getHistorico();
         $raca = $objeto->getRaca();
 
-        $sqlStmt = "UPDATE {$this->tabela} SET NOME=:nome, NOME=:nome, ESPECIE=:especie, GENERO=:genero, SITUACAO=:situacao, DATANASCIMENTO=:dataNascimento, HISTORICO=:historico, RACA=:raca WHERE ID=:id";
+        $sqlStmt = "UPDATE {$this->tabela} SET NOME=:nome, ESPECIE=:especie, GENERO=:genero, SITUACAO=:situacao, DATANASCIMENTO=:dataNascimento, HISTORICO=:historico, RACA=:raca WHERE ID=:id";
         try {
            $operacao = $this->conexao->prepare($sqlStmt);
            $operacao->bindValue(":id", $id, PDO::PARAM_INT);
            $operacao->bindValue(":nome", $nome, PDO::PARAM_STR);
            $operacao->bindValue(":especie", $especie, PDO::PARAM_STR);
            $operacao->bindValue(":genero", $genero, PDO::PARAM_STR);
-           $operacao->bindValue(":situacao", $status, PDO::PARAM_STR);
+           $operacao->bindValue(":situacao", $situacao, PDO::PARAM_STR);
            $operacao->bindValue(":dataNascimento", $data_nascimento, PDO::PARAM_STR);
            $operacao->bindValue(":historico", $historico, PDO::PARAM_STR);
            $operacao->bindValue(":raca", $raca, PDO::PARAM_STR);

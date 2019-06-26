@@ -42,7 +42,7 @@ class Animal implements JsonSerializable{
   }
 
   public function getId(){
-     return $id;
+     return $this->id;
   }
   
  public function setNome($nomeAnimal) {
