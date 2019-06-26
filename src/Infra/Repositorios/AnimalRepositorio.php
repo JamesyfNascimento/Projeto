@@ -148,6 +148,8 @@ class AnimalRepositorio extends BaseRepositorio implements IAnimalRepositorio {
          }else if($animalAtendimento == "true"){
             $sqlStmt = "SELECT * from {$this->tabela} a
             inner join Atendimento c on a.ID = c.id_animal where a.GENERO = '{$sexo}';";
+         }else{
+            $sqlStmt = "SELECT * from {$this->tabela}";
          }
         
          // $sqlStmt = "SELECT * from {$this->tabela}";

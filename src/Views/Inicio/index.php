@@ -94,7 +94,7 @@
                     <div class="form-group col-md-4 col-xs-12">
                         <label for="visitaAgendada">Animal com visita agendada?</label>
                         <select id="visitaAgendada" name="visitaAgendada" class="form-control">
-                            <option selected>...</option>
+                            <option value="" selected>...</option>
                             <option value="true">Sim</option>
                             <option value="false">Não</option>
                         </select>
@@ -102,7 +102,7 @@
                     <div class="form-group col-md-4 col-xs-12">
                         <label for="animalAtendimento">Animal em atendimento?</label>
                         <select id="animalAtendimento" name="animalAtendimento" class="form-control">
-                            <option selected>...</option>
+                            <option value="" selected>...</option>
                             <option value="true">Sim</option>
                             <option value="false">Não</option>
                         </select>
